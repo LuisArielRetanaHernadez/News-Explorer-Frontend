@@ -7,9 +7,10 @@ const Navigation = () => {
   <nav className="navigation">
     <ul>
         <li><Link to="/">Inicio</Link></li>
-        <li><Link to="/saved-news">Articulos Guardados</Link></li>
-        <li><Link to="/signin">Iniciar Sesion</Link></li>
-        <li><Link to="/signup"><button className="navigation__button">Registrarse</button></Link></li>
+        {false && <li><Link to="/saved-news">Articulos Guardados</Link></li>}
+        {false && <li><button>Salir</button></li>}
+        <li><button>Iniciar Sesion</button></li>
+        {false && <li><button className="navigation__button">Registrarse</button></li>}
     </ul>
   </nav>
   )
