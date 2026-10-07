@@ -1,11 +1,19 @@
 .header {
-    background-color: #000;
+    background-color: transparent;
     border-bottom: 1px solid #fff;
+}
+
+.header--floating {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .header__container {
     width: 100%;
-    max-width: 1280px;
+    max-width: 1480px;
     margin: 0 auto;
     background-color: transparent;
     display: flex;
@@ -22,7 +30,7 @@
 }
 
 .header__container--wrapper {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
     box-sizing: border-box;
 }
