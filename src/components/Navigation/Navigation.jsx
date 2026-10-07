@@ -5,12 +5,12 @@ import { Link } from 'react-router';
 const Navigation = () => {
   return (
   <nav className="navigation">
-    <ul>
-        <li><Link to="/">Inicio</Link></li>
-        {false && <li><Link to="/saved-news">Articulos Guardados</Link></li>}
-        {false && <li><button>Salir</button></li>}
-        <li><button>Iniciar Sesion</button></li>
-        {false && <li><button className="navigation__button">Registrarse</button></li>}
+    <ul className="navigation__list">
+        <li className='navigation__item'><Link className='navigation__link' to="/">Inicio</Link></li>
+        {false && <li className='navigation__item'><Link className='navigation__link' to="/saved-news">Articulos Guardados</Link></li>}
+        {false && <li className='navigation__item'><button className='navigation__button'>Salir</button></li>}
+        <li className='navigation__item'><button className='navigation__button navigation__button--circle'>Iniciar Sesion</button></li>
+        {false && <li className='navigation__item'><button className="navigation__button">Registrarse</button></li>}
     </ul>
   </nav>
   )

@@ -1,0 +1,38 @@
+.navigation {
+    background-color: transparent;
+}
+
+.navigation__list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation__item {
+    font-family: 'Roboto 400 Regular', sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.navigation__link {
+    color: #fff;
+    padding: 9px 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navigation__button {
+    font-family: 'Roboto 400 Regular', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.navigation__button--circle {
+    border-radius: 50px;
+    border: 1px solid #fff;
+}

@@ -1,0 +1,13 @@
+.layout-header {
+    min-height: 100vh;
+    background-color: blue;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.layout-header__main {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    background-color: red;
+}
