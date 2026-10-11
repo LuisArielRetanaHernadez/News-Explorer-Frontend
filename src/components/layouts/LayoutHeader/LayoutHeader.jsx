@@ -1,4 +1,5 @@
 import Header from '../../Header/Header'
+import Footer from '../../Footer/Footer'
 import './LayoutHeader.css'
 
 import {Outlet} from 'react-router'
@@ -13,6 +14,7 @@ const LayoutHeader = () => {
           <Outlet />
         </main>
         
+        <Footer />
     </div>
   )
 }
