@@ -1,10 +1,12 @@
 import './Home.css'
 
+import About from '../About/About'
+
 const Home = () => {
   return (
     <section className="home">
         {/* Hero */ }
-      <h2>Home</h2>
+      <About />
     </section>
   )
 }
