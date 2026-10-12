@@ -1,0 +1,47 @@
+.about {
+    width: 100%;
+    max-width: 100%;
+}
+
+.about__container {
+    display: flex;
+    gap: 56;
+}
+
+.about__container--wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+}
+
+.about__content-image {
+    width: 464px;
+    height: 464px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.about__img-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about__content {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.about__title {
+    font-family: "Roboto Slab 400", sans-serif;
+    font-size: 40px;
+}
+
+.about__text {
+    font-family: "Roboto 400 Regular", sans-serif;
+    font-size: 18px;
+}
