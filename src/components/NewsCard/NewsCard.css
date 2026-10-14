@@ -1,0 +1,91 @@
+.news-card {
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    box-shadow: 7px 5px 8px -7px rgba(0, 0, 0, 0.2); 
+
+    position: relative;
+}
+
+.news-card--raunded {
+    border-radius: 20px;
+}
+
+.news-card__button-save {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: 0px;
+    border-radius: 10px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.news-card__button-save--disable .news-card__save-icon {
+    fill: #B6BCBF;
+}
+
+.news-card__button-save--disable::before {
+    transition: 1s;
+}
+
+.news-card__button-save--disable:hover::before {
+    content: 'inica sesión para guardar articulos';
+    width: 260px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    padding-left: 9px;
+    padding-right: 9px;
+    background-color: #fff;
+    font-size: 16px;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    right: 50px;
+}
+
+.news-card__content-image {
+    width: 100%;
+    max-width: 100%;
+    height: 272px;
+    max-height: 272px;
+    margin: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+}
+
+.news-card__content {
+    padding: 20px;
+}
+
+.news-card__time {
+    font-family: 'Roboto Slab 400', sans-serif;
+    font-size: 18px;
+    color: #B6BCBF;
+}
+
+.news-card__title {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-family: 'Roboto Slab 400', sans-serif;
+    font-size: 26px;
+}
+
+.news-card__text {
+    margin-bottom: 14px;
+    font-family: 'Roboto 400 Regular', sans-serif;
+    font-size: 16px;
+    color: #1A1B22;
+}
+
+.news-card__source {
+    font-family: 'Roboto Slab 700', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #B6BCBF;
+    text-transform: uppercase;
+}
