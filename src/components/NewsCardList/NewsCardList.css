@@ -1,0 +1,48 @@
+.cards {
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 80px;
+    padding-top: 80px;
+    background-color: #F5F6F7;
+}
+
+.cards--wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+}
+
+.cards__title {
+    margin-bottom: 64px;
+    font-family: "Roboto Slab 400", sans-serif;
+    font-size: 46px;
+}
+
+.cards__list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.cards__link {
+    color: #000;
+    text-decoration: none;
+}
+
+.cards__button-more {
+    width: 228px;
+    height: 64px;
+    margin: 0 auto;
+    margin-top: 64px;
+    color: #000;
+    background-color: #E8E8E8;
+    display: block;
+    font-family: "Roboto 500", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
