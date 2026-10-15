@@ -3,39 +3,62 @@ import './PopupWithForm.css'
 import CloseIcon from "../../images/back.svg"
 
 
-const FormLogin = () => {
+export const FormLogin = () => {
     return (
-        <div className=''>
-            <form>
-                <fieldset>
-                    <div>
-                        <label>Correo electronico</label>
-                        <input placeholder='Introduce tu correo electronico' />
-                    </div>
-                    <div>
-                        <label>Contraseña</label>
-                        <input placeholder='Introduce tu contraseña' />
-                    </div>
-                </fieldset>
-            </form>
-        </div>
+        <form className='popup-with-form__form '>
+            <fieldset className='popup-with-form__fieldset'>
+                <div className='popup-with-form__field'>
+                    <label className='popup-with-form__label' htmlFor='login-email'>Correo electronico</label>
+                    <input
+                        className='popup-with-form__input'
+                        id='login-email'
+                        name='email'
+                        type='email'
+                        autoComplete='email'
+                        placeholder='Introduce tu correo electronico'
+                        required
+                    />
+                </div>
+                <div className='popup-with-form__field'>
+                    <label className='popup-with-form__label' htmlFor='login-password'>Contraseña</label>
+                    <input
+                        className='popup-with-form__input'
+                        id='login-password'
+                        name='password'
+                        type='password'
+                        autoComplete='current-password'
+                        placeholder='Introduce tu contraseña'
+                        required
+                    />
+                </div>
+            </fieldset>
+            <button className='popup-with-form__button-submit popup-with-form__button-submit--active' type='submit'>Iniciar sesion</button>
+            
+            <p className='popup-with-form__option-redirection'>
+                o <button className='popup-with-form__button-direction-register' type='button'>Inscribirse</button>
+            </p> 
+            
+        </form>
     )
 }
 
 
-const PopupWithForm = ({}) => {
+const PopupWithForm = () => {
 
     return (
-        <section className='popup-form popup-form--center-medium-content'>
-            <div className='popup-form__modal'>
-                <span className='popup-form__button-close'>
-                    <img src={CloseIcon} />
-                </span>
-                <h2 className='popup-form__title'>Modal</h2>
-                <div className='popup-form__content'>
-                    <p>Formulario probado, en contenido</p>
-                </div>
-            </div>   
+        <section className='popup-with-form popup-with-form--centered popup-with-form--close'>
+            <div
+                className='popup-with-form__modal'
+                role='dialog'
+                aria-modal='true'
+                aria-labelledby='login-title'
+            >
+                <button className='popup-with-form__close-button' type='button' aria-label='Cerrar modal'>
+                    <img className='popup-with-form__close-icon' src={CloseIcon} alt='' />
+                </button>
+                <h2 className='popup-with-form__title' id='login-title'>Login</h2>
+                {/* aqui va el contendio del componete/prop children */}
+            </div>
         </section>
     )
 }

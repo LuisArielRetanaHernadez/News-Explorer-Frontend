@@ -1,4 +1,4 @@
-.popup-form {
+.popup-with-form {
     max-width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.418);
@@ -10,12 +10,21 @@
     z-index: 10000;
 }
 
-.popup-form--center-medium-content {
+.popup-with-form--centered {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.popup-form__modal {
+
+.popup-with-form--open {
+    display: flex;
+}
+
+.popup-with-form--close {
+    display: none;
+}
+
+.popup-with-form__modal {
     width: 100%;
     max-width: 430px;
     padding-top: 20px;
@@ -27,10 +36,11 @@
     position: relative;
 }
 
-.popup-form__button-close {
+.popup-with-form__close-button {
     width: 40px;
     height: 40px;
     background-color: transparent;
+    border: none;
     color: blue;
     fill: blue;
     position: absolute;
@@ -39,8 +49,84 @@
     cursor: pointer;
 }
 
-.popup-form__title {
+.popup-with-form__title {
     margin-top: 14px;
     font-family: "Roboto 900", sans-serif;
     font-size: 24px;
+}
+
+/* .................... Style Form ..................... */
+
+.popup-with-form__form {
+    width: 100%;
+}
+
+.popup-with-form__fieldset {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 31px;
+    outline: none;
+}
+
+.popup-with-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.popup-with-form__label {
+    font-family: "Inter 400 Regular", sans-serif;
+    font-size: 12px;
+    color: #2F71E5;
+}
+
+.popup-with-form__input {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: "Inter 400 Regular", sans-serif;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+}
+
+.popup-with-form__button-submit {
+    width: 100%;
+    height: 64px;
+    margin-top: 39px;
+    border: none;
+    border-radius: 50px;
+    font-family: "Roboto 500", sans-serif;
+    font-size: 18px;
+}
+
+.popup-with-form__button-submit--disable {
+    background-color: #E6E8EB;
+    color: #B6BCBF;
+    cursor: not-allowed;
+}
+
+.popup-with-form__button-submit--active {
+    background-color: #2F71E5;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.popup-with-form__option-redirection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-size: 14px;
+}
+
+.popup-with-form__button-direction-register {
+    border: none;
+    background-color: transparent;
+    color: #2F71E5;
+    cursor: pointer;
 }
