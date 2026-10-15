@@ -1,0 +1,46 @@
+.popup-form {
+    max-width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.418);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+}
+
+.popup-form--center-medium-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.popup-form__modal {
+    width: 100%;
+    max-width: 430px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 36px;
+    padding-right: 36px;
+    background-color: #fff;
+    border-radius: 20px;
+    position: relative;
+}
+
+.popup-form__button-close {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    color: blue;
+    fill: blue;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    cursor: pointer;
+}
+
+.popup-form__title {
+    margin-top: 14px;
+    font-family: "Roboto 900", sans-serif;
+    font-size: 24px;
+}
