@@ -5,7 +5,10 @@ import { Link, NavLink } from 'react-router';
 import { usePopupLoginForm } from '../PopupLoginForm/PopupLoginForm';
 
 const Navigation = () => {
+
   const toggleOpen = usePopupLoginForm(state => state.toggleOpen)
+
+
   return (
   <nav className="navigation">
     <ul className="navigation__list">

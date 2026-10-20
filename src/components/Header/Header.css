@@ -9,6 +9,7 @@
     background-color: transparent;
     display: flex;
     align-items: center;
+    transition: .4s;
 }
 
 .header__navigation--floating {
@@ -19,6 +20,18 @@
     z-index: 9999;
 }
 
+.header__navigation--wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+}
+
+.header__navigation--blur {
+    background-color: rgba(0, 0, 0, 0.247);
+    backdrop-filter: blur(6px);
+    transition: .4s;
+}
+
 .header__logo {
     font-family: 'Roboto slab 400', sans-serif;
     font-size: 20px;
@@ -26,12 +39,6 @@
     color: #fff;
     text-decoration: none;
     flex: 1;
-}
-
-.header__navigation--wrapper {
-    padding-left: 30px;
-    padding-right: 30px;
-    box-sizing: border-box;
 }
 /* Hero */
 

@@ -1,15 +1,53 @@
 import './Header.css'
 
+import { useEffect, useRef, useState } from 'react';
+
 import Navigation from '../Navigation/Navigation'
 
 import { Link } from 'react-router'
 import SearchForm from '../SearchForm/SearchForm'
 
 const Header = () => {
+  const [scrollY, setScrollY] = useState(0)
+
+
+  const navigationRef = useRef()
+
+  useEffect(() => {
+    const handlesScrollY = () => {
+      console.log(window.scrollY)
+      setScrollY(window.scrollY)
+    }
+
+    window.addEventListener('scroll', handlesScrollY)
+
+    return () => {
+      window.removeEventListener('scroll', handlesScrollY)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!navigationRef?.current) return
+
+    const heightNavigation =  navigationRef.current.offsetHeight
+
+    if (scrollY > heightNavigation * 2) {
+      navigationRef.current.classList.add('header__navigation--blur')
+    }
+
+    if (scrollY < heightNavigation) {
+      navigationRef.current.classList.remove('header__navigation--blur')
+    }
+
+  }, [navigationRef, scrollY])
+
   return (
     <header className="header header--floating"> 
     
-      <div className="header__navigation header__navigation--wrapper header__navigation--floating">
+      <div 
+        className="header__navigation header__navigation--wrapper header__navigation--floating"
+        ref={navigationRef}
+        >
           <Link className='header__logo' to="/">NewsExplorer</Link>
           {/* componente Navigation */}
           <Navigation />
