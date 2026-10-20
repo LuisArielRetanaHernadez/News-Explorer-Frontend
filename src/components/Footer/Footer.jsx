@@ -1,4 +1,5 @@
 import './Footer.css';
+
 import facebookIcon from '../../images/fb.png';
 import githubIcon from '../../images/github.png';
 

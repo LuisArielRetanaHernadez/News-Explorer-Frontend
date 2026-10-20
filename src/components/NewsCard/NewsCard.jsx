@@ -1,7 +1,6 @@
 import './NewsCard.css'
 
 import BookMark from "../../images/bookmark.svg"
-
 import Image from "../../images/image_08.png"
 
 const NewsCard = () => {

@@ -1,5 +1,7 @@
-import { Link } from 'react-router'
 import './NewsCardList.css'
+
+import { Link } from 'react-router'
+
 import NewsCard from '../NewsCard/NewsCard'
 
 

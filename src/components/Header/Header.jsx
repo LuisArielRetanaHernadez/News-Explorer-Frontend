@@ -2,9 +2,10 @@ import './Header.css'
 
 import { useEffect, useRef, useState } from 'react';
 
+import { Link } from 'react-router'
+
 import Navigation from '../Navigation/Navigation'
 
-import { Link } from 'react-router'
 import SearchForm from '../SearchForm/SearchForm'
 
 const Header = () => {
@@ -14,11 +15,8 @@ const Header = () => {
   const navigationRef = useRef()
 
   useEffect(() => {
-    const handlesScrollY = () => {
-      console.log(window.scrollY)
-      setScrollY(window.scrollY)
-    }
-
+    const handlesScrollY = () => setScrollY(window.scrollY)
+    
     window.addEventListener('scroll', handlesScrollY)
 
     return () => {
@@ -49,7 +47,6 @@ const Header = () => {
         ref={navigationRef}
         >
           <Link className='header__logo' to="/">NewsExplorer</Link>
-          {/* componente Navigation */}
           <Navigation />
       </div>
 
