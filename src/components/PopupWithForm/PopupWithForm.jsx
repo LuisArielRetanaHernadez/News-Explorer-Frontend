@@ -2,6 +2,8 @@ import './PopupWithForm.css'
 
 import CloseIcon from "../../images/back.svg"
 
+import { useEffect, useRef } from 'react'
+
 
 export const FormLogin = () => {
     return (
@@ -43,21 +45,53 @@ export const FormLogin = () => {
 }
 
 
-const PopupWithForm = () => {
+const PopupWithForm = (props) => {
+    const modalRef = useRef()
+
+    const onClosePopup = (e) => {
+        props.setIsOpen(false)
+    }
+
+    useEffect(() => {
+        if (!modalRef.current) return
+
+        const onOutClickModal = e => {
+            if (!modalRef.current.contains(e.target)) onClosePopup()
+        }
+        const onKeyEscClosePopup = e => {
+            if (e.key === 'Escape') onClosePopup()
+        }
+        
+        props.isOpen && document.addEventListener('mousedown', onOutClickModal) 
+        props.isOpen && document.addEventListener('keydown', onKeyEscClosePopup)
+
+        return () => {
+            document.removeEventListener('mousedown', onOutClickModal)
+            document.addEventListener('keydown', onKeyEscClosePopup)
+        }
+    },[modalRef, props.isOpen])
 
     return (
-        <section className='popup-with-form popup-with-form--centered popup-with-form--close'>
+        <section 
+            className={`popup-with-form popup-with-form--centered ${props.isOpen ? 'popup-with-form--open' : 'popup-with-form--close'}`}
+            
+        >
             <div
                 className='popup-with-form__modal'
                 role='dialog'
                 aria-modal='true'
                 aria-labelledby='login-title'
+
+                ref={modalRef} 
             >
-                <button className='popup-with-form__close-button' type='button' aria-label='Cerrar modal'>
+                <button className='popup-with-form__close-button' type='button' aria-label='Cerrar modal'
+                onClick={e => props.setIsOpen(false)}
+                >
                     <img className='popup-with-form__close-icon' src={CloseIcon} alt='' />
                 </button>
                 <h2 className='popup-with-form__title' id='login-title'>Login</h2>
                 {/* aqui va el contendio del componete/prop children */}
+                {props.children}
             </div>
         </section>
     )
