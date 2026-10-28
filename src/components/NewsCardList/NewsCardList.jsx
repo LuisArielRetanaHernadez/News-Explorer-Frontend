@@ -24,43 +24,61 @@ const NewCardList = () => {
     const cards = useCardsNews(state => state.cards)
     const status = useCardsNews(state => state.status)
 
+    const numberCardsToRender = 3
+
     const [cardsRender, setCardsRender] = useState([])
     const [indexFromCard, setIndexFromCard] = useState(0)
-    const [indexToCard, setIndexToCard] = useState(3)
+    const [indexToCard, setIndexToCard] = useState(numberCardsToRender)
+    const [activeButtonMore, setActiveButtonMore] = useState(false)
 
     const getCardsNews = useCardsNews(state => state.getCardsNews)
     const resetCardsNewsEmpary = useCardsNews(state => state.resetCardsNewsEmpary)
     const setStatus = useCardsNews(state => state.setStatus)
 
-    const numberCardsToRender = 3
+
 
     const addCardsToListCardsRender = (isInitial = false) => {
         if (cards.length < 0 || cards[0] === null || status !== 'ok') return
+
         if (cardsRender.length === cards.length) return
 
         if (isInitial) {
-            setCardsRender(state => [...cards.slice(indexFromCard, indexToCard) ])
+            setCardsRender([...cards.slice(indexFromCard, indexToCard) ])
             return
         }
 
+        const fromIndex = indexFromCard + numberCardsToRender
+        const toIndex = indexToCard + numberCardsToRender
+
+        setCardsRender(state => [...state, ...cards.slice(fromIndex, toIndex) ])
+
         setIndexFromCard(state => state + numberCardsToRender)
         setIndexToCard(state => state + numberCardsToRender)
-
-        setCardsRender(state => [...state, ...cards.slice(indexFromCard, indexToCard) ])
     }
 
     useEffect(() => {
         if (cards.length < 0) return
 
-        if (cardsRender.length <= 0) addCardsToListCardsRender(true)
+        if (cardsRender.length <= 0) {
+            addCardsToListCardsRender(true)
+            setActiveButtonMore(true)
+        }
 
         if (cardsRender.length > 0) {
             setIndexFromCard(0)
             setIndexToCard(numberCardsToRender)
             addCardsToListCardsRender(true)
+            setActiveButtonMore(true)
         }
         
     }, [cards, status])
+
+    useEffect(() => {
+        if (cardsRender.length === cards.length) {
+            setActiveButtonMore(false)
+        }
+    }, [cardsRender])
+
     return (
         <section className='cards cards--wrapper'>
 
@@ -88,7 +106,7 @@ const NewCardList = () => {
             </ul>
            
 
-            <button className='cards__button-more' onClick={() => addCardsToListCardsRender()}>Ver mas</button>
+            {activeButtonMore && <button className='cards__button-more' onClick={() => addCardsToListCardsRender()}>Ver mas</button>} 
         </section>
     )
 }
