@@ -8,8 +8,15 @@ import Navigation from '../Navigation/Navigation'
 
 import SearchForm from '../SearchForm/SearchForm'
 
+import { useCardsNews } from '../NewsCardList/NewsCardList';
+import { api } from '../../utils/ThirdPartyApi';
+
 const Header = () => {
   const [scrollY, setScrollY] = useState(0)
+
+  const getCardsNews = useCardsNews(state => state.getCardsNews)
+  const setStatus = useCardsNews(state => state.setStatus)
+  const resetCardsNewsEmpary = useCardsNews(state => state.resetCardsNewsEmpary)
 
 
   const navigationRef = useRef()
@@ -39,6 +46,34 @@ const Header = () => {
 
   }, [navigationRef, scrollY])
 
+  const handleSearchCardsNews = async(text) => {
+    const fromSevenDays = new Date()
+    fromSevenDays.setDate(fromSevenDays.getDate() -7)
+
+    const response = await api.getSearchCardsNews({
+      q: text,
+      from: fromSevenDays.toLocaleDateString(),
+      to: new Date().toLocaleDateString(),
+      sortBy: 'popularity',
+      pageSize: 20
+    })
+
+    if (response.status === 'ok' && response.articles.length > 0) {
+      getCardsNews(response.articles)
+      setStatus('ok')
+    }
+
+    if (response.status !== 'ok') {
+      setStatus('400')
+      resetCardsNewsEmpary()
+    }
+
+    if (response.status === 'ok' && response.articles.length < 0) {
+      setStatus('ok')
+      getCardsNews([null])
+    }
+  }
+
   return (
     <header className="header header--floating"> 
     
@@ -55,7 +90,7 @@ const Header = () => {
             <div className="hero__content hero__content--wrapper">
                 <h1 className="hero__title">¿Que esta pasando en el mundo?</h1>
                 <p className="hero__subtitle">Encuentra las últimas noticias sobre cualquier tema y guárdalas en tu cuenta personal</p>
-                <SearchForm />
+                <SearchForm handleSearch={handleSearchCardsNews}/>
             </div>
         </div>
       </div>
