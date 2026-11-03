@@ -1,0 +1,34 @@
+.preloader {
+    max-width: 100%;
+}
+
+.preloader__figure {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto;
+    animation: preloader_figure 1.2s linear infinite;
+}
+
+.preloader__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ....... animation preloader_figure ......... */
+@keyframes preloader_figure {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* .......... finally animation preloader_figure .......... */
+
+.preloader__text {
+    font-family: 'Roboto 400 Regular', sans-serif;
+    text-align: center;
+    color: #B6BCBF;
+}
