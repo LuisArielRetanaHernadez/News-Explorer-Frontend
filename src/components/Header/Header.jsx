@@ -17,6 +17,7 @@ const Header = () => {
   const getCardsNews = useCardsNews(state => state.getCardsNews)
   const setStatus = useCardsNews(state => state.setStatus)
   const resetCardsNewsEmpary = useCardsNews(state => state.resetCardsNewsEmpary)
+  const setIsPreloader = useCardsNews(state => state.setIsPreloader)
 
 
   const navigationRef = useRef()
@@ -50,27 +51,36 @@ const Header = () => {
     const fromSevenDays = new Date()
     fromSevenDays.setDate(fromSevenDays.getDate() -7)
 
-    const response = await api.getSearchCardsNews({
-      q: text,
-      from: fromSevenDays.toLocaleDateString(),
-      to: new Date().toLocaleDateString(),
-      sortBy: 'popularity',
-      pageSize: 20
-    })
+    setIsPreloader(true)
 
-    if (response.status === 'ok' && response.articles.length > 0) {
-      getCardsNews(response.articles)
-      setStatus('ok')
-    }
+    try {
+      const response = await api.getSearchCardsNews({
+        q: text,
+        from: fromSevenDays.toLocaleDateString(),
+        to: new Date().toLocaleDateString(),
+        sortBy: 'popularity',
+        pageSize: 20
+      })
 
-    if (response.status !== 'ok') {
+      if (response.status === 'ok' && response.articles.length > 0) {
+        getCardsNews(response.articles)
+        setStatus('ok')
+      }
+
+      if (response.status !== 'ok') {
+        setStatus('400')
+        resetCardsNewsEmpary()
+      }
+
+      if (response.status === 'ok' && response.articles.length < 0) {
+        setStatus('ok')
+        getCardsNews([null])
+      }
+    } catch {
       setStatus('400')
       resetCardsNewsEmpary()
-    }
-
-    if (response.status === 'ok' && response.articles.length < 0) {
-      setStatus('ok')
-      getCardsNews([null])
+    } finally {
+      setIsPreloader(false)
     }
   }
 
