@@ -29,10 +29,6 @@ class Api {
             
         })
 
-        console.log('response fetch: ', response)
-
-        if (response.status === "ok") return response.json()
-
         return response.json()
     }
 }
