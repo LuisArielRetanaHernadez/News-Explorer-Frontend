@@ -7,6 +7,7 @@ import { Link } from 'react-router'
 import { api } from '../../utils/ThirdPartyApi'
 
 import NewsCard from '../NewsCard/NewsCard'
+import Preloader from '../Preloader/Preloader'
 
 import { create } from 'zustand';
 
@@ -14,15 +15,18 @@ import { create } from 'zustand';
 export const useCardsNews = create(set => ({
   cards: [],
   status: '',
+  isPreloader: false,
   getCardsNews: (cardsFind) => set(state => ({cards: cardsFind})),
   resetEmaptyCardsNews: () => set(state =>({cards: []})),
-  setStatus: (status) => set(state => ({status: status}))
+  setStatus: (status) => set(state => ({status: status})),
+  setIsPreloader: (isPreloader) => set(state => ({isPreloader: isPreloader})),
 }))
 
 
 const NewCardList = () => {
     const cards = useCardsNews(state => state.cards)
     const status = useCardsNews(state => state.status)
+    const isVisiblePreloader = useCardsNews(state => state.isPreloader)
 
     const numberCardsToRender = 3
 
@@ -30,6 +34,7 @@ const NewCardList = () => {
     const [indexFromCard, setIndexFromCard] = useState(0)
     const [indexToCard, setIndexToCard] = useState(numberCardsToRender)
     const [activeButtonMore, setActiveButtonMore] = useState(false)
+    const [isVisisbleSection, setIsVisibleSection] = useState(false)
 
     const getCardsNews = useCardsNews(state => state.getCardsNews)
     const resetCardsNewsEmpary = useCardsNews(state => state.resetCardsNewsEmpary)
@@ -79,10 +84,16 @@ const NewCardList = () => {
         }
     }, [cardsRender])
 
-    return (
-        <section className='cards cards--wrapper'>
+    useEffect(()  => {
 
-            <h2 className='cards__title'>Resultados de la búsqueda</h2>
+    }, [] )
+
+    return (
+        <section className={`${ isVisisbleSection && 'cards cards--wrapper'}`}>
+
+            {isVisiblePreloader && <Preloader />}
+
+            {cardsRender.length > 0 && <h2 className='cards__title'>Resultados de la búsqueda</h2>}
 
             <ul className='cards__list'>
                 {
