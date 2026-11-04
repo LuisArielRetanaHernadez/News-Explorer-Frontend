@@ -49,7 +49,7 @@ const Header = () => {
 
   const handleSearchCardsNews = async(text) => {
     const fromSevenDays = new Date()
-    fromSevenDays.setDate(fromSevenDays.getDate() -7)
+    fromSevenDays.setDate(fromSevenDays.getDate() - 7)
 
     setIsPreloader(true)
 
