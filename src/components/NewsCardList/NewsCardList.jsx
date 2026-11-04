@@ -8,6 +8,7 @@ import { api } from '../../utils/ThirdPartyApi'
 
 import NewsCard from '../NewsCard/NewsCard'
 import Preloader from '../Preloader/Preloader'
+import NotFound from '../NotFound/NotFound'
 
 import { create } from 'zustand';
 
@@ -92,6 +93,8 @@ const NewCardList = () => {
         <section className={`${ isVisisbleSection && 'cards cards--wrapper'}`}>
 
             {isVisiblePreloader && <Preloader />}
+
+            {status === '404' && <NotFound />}
 
             {cardsRender.length > 0 && <h2 className='cards__title'>Resultados de la búsqueda</h2>}
 
