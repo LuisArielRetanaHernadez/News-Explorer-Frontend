@@ -19,7 +19,7 @@ class Api {
             q: parametres.q,
             from: parametres.from,
             to: parametres.to || new Date().toLocaleDateString(),
-            sortBy: parametres.sortBy || "popularity ",
+            sortBy: parametres.sortBy || "popularity",
             pageSize: parametres.pageSize || 20,
         })
         
