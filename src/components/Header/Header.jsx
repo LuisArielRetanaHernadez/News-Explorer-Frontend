@@ -16,7 +16,7 @@ const Header = () => {
 
   const getCardsNews = useCardsNews(state => state.getCardsNews)
   const setStatus = useCardsNews(state => state.setStatus)
-  const resetCardsNewsEmpary = useCardsNews(state => state.resetCardsNewsEmpary)
+  const resetEmaptyCardsNews = useCardsNews(state => state.resetEmaptyCardsNews)
   const setIsPreloader = useCardsNews(state => state.setIsPreloader)
 
 
@@ -56,10 +56,10 @@ const Header = () => {
     try {
       const response = await api.getSearchCardsNews({
         q: text,
-        from: fromSevenDays.toLocaleDateString(),
-        to: new Date().toLocaleDateString(),
+        from: fromSevenDays.toLocaleDateString('en-CA'),
+        to: new Date().toLocaleDateString('en-CA'),
         sortBy: 'popularity',
-        pageSize: 20
+        pageSize: 100
       })
 
       if (response.status === 'ok' && response.articles.length > 0) {
@@ -68,17 +68,17 @@ const Header = () => {
       }
 
       if (response.status !== 'ok') {
-        setStatus('400')
-        resetCardsNewsEmpary()
+        setStatus(response.status)
+        resetEmaptyCardsNews()
       }
 
-      if (response.status === 'ok' && response.articles.length < 0) {
+      if (response.status === 'ok' && response.articles.length <= 0) {
         setStatus('ok')
         getCardsNews([null])
       }
-    } catch {
-      setStatus('400')
-      resetCardsNewsEmpary()
+    } catch (error) {
+      setStatus(error.message)
+      resetEmaptyCardsNews()
     } finally {
       setIsPreloader(false)
     }
