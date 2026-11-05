@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react'
 
 import { Link } from 'react-router'
 
-import { api } from '../../utils/ThirdPartyApi'
-
 import NewsCard from '../NewsCard/NewsCard'
 import Preloader from '../Preloader/Preloader'
 import NotFound from '../NotFound/NotFound'
@@ -31,77 +29,69 @@ const NewCardList = () => {
 
     const numberCardsToRender = 3
 
-    const [cardsRender, setCardsRender] = useState([])
     const [indexFromCard, setIndexFromCard] = useState(0)
     const [indexToCard, setIndexToCard] = useState(numberCardsToRender)
     const [activeButtonMore, setActiveButtonMore] = useState(false)
     const [isVisisbleSection, setIsVisibleSection] = useState(false)
 
-    const getCardsNews = useCardsNews(state => state.getCardsNews)
-    const resetCardsNewsEmpary = useCardsNews(state => state.resetCardsNewsEmpary)
-    const setStatus = useCardsNews(state => state.setStatus)
-
-
-
-    const addCardsToListCardsRender = (isInitial = false) => {
-        if (cards.length < 0 || cards[0] === null || status !== 'ok') return
-
-        if (cardsRender.length === cards.length) return
-
-        if (isInitial) {
-            setCardsRender([...cards.slice(indexFromCard, indexToCard) ])
+    const moreCardsToRender = () => {
+        if (cards.length <= 0 || cards[0] === null) return
+        
+        if (indexToCard >= cards.length) {
+            setActiveButtonMore(false)
             return
         }
 
-        const fromIndex = indexFromCard + numberCardsToRender
-        const toIndex = indexToCard + numberCardsToRender
-
-        setCardsRender(state => [...state, ...cards.slice(fromIndex, toIndex) ])
-
-        setIndexFromCard(state => state + numberCardsToRender)
         setIndexToCard(state => state + numberCardsToRender)
     }
 
     useEffect(() => {
-        if (cards.length < 0) return
-
-        if (cardsRender.length <= 0) {
-            addCardsToListCardsRender(true)
-            setActiveButtonMore(true)
+        if (cards.length <= 0) {
+            setIsVisibleSection(false)
+            setActiveButtonMore(false)
+            return
         }
 
-        if (cardsRender.length > 0) {
+        if (status === 'ok' && cards.length[0] === null) { 
+            setIsVisibleSection(true)
+            return
+        }
+
+        if (status !== 'ok') {
+            setIsVisibleSection(false)
+            setActiveButtonMore(false)
+            return
+        }
+
+        if (status === 'ok' && cards.length > 0 && cards[0] !== null) {
+            setIsVisibleSection(true)
             setIndexFromCard(0)
             setIndexToCard(numberCardsToRender)
-            addCardsToListCardsRender(true)
             setActiveButtonMore(true)
         }
         
     }, [cards, status])
 
     useEffect(() => {
-        if (cardsRender.length === cards.length) {
-            setActiveButtonMore(false)
+        if (isVisiblePreloader) {
+            setIsVisibleSection(true)
         }
-    }, [cardsRender])
+    }, [isVisiblePreloader])
 
-    useEffect(()  => {
-
-    }, [] )
 
     return (
         <section className={`${ isVisisbleSection && 'cards cards--wrapper'}`}>
 
             {isVisiblePreloader && <Preloader />}
 
-            {status === '404' && <NotFound />}
+            {(status === 'ok' && cards[0] === null) && <NotFound />}
 
-            {cardsRender.length > 0 && <h2 className='cards__title'>Resultados de la búsqueda</h2>}
+            {(cards.length > 0 && status === 'ok' && cards[0] !== null) && <h2 className='cards__title'>Resultados de la búsqueda</h2>}
 
             <ul className='cards__list'>
                 {
-                    (status === 'ok' && cards.length > 0) &&
-                    cardsRender.map((card, index) => (
+                    (status === 'ok' && cards.length > 0 && cards[0] !== null) &&
+                    cards.map((card, index) => (
                         <li key={index} className='cards__item'>
                             <Link className='cards__link'>
                                 <NewsCard 
@@ -114,13 +104,13 @@ const NewCardList = () => {
                                 />
                             </Link>
                         </li>
-                    ))
+                    )).slice(indexFromCard, indexToCard)
                 }
 
             </ul>
            
 
-            {activeButtonMore && <button className='cards__button-more' onClick={() => addCardsToListCardsRender()}>Ver mas</button>} 
+            {activeButtonMore && <button className='cards__button-more' onClick={() => moreCardsToRender()}>Ver mas</button>} 
         </section>
     )
 }
