@@ -7,8 +7,10 @@ import { Link } from 'react-router'
 import NewsCard from '../NewsCard/NewsCard'
 import Preloader from '../Preloader/Preloader'
 import NotFound from '../NotFound/NotFound'
+import ErrorFound from '../ErrorFound/ErrorFound'
 
 import { create } from 'zustand';
+
 
 
 export const useCardsNews = create(set => ({
@@ -46,7 +48,7 @@ const NewCardList = () => {
     }
 
     useEffect(() => {
-        if (cards.length <= 0) {
+        if (cards.length <= 0 && status === '') {
             setIsVisibleSection(false)
             setActiveButtonMore(false)
             return
@@ -57,8 +59,8 @@ const NewCardList = () => {
             return
         }
 
-        if (status !== 'ok') {
-            setIsVisibleSection(false)
+        if (status === 'error') {
+            setIsVisibleSection(true)
             setActiveButtonMore(false)
             return
         }
@@ -85,6 +87,8 @@ const NewCardList = () => {
             {isVisiblePreloader && <Preloader />}
 
             {(status === 'ok' && cards[0] === null) && <NotFound />}
+
+            {(status === 'error') && <ErrorFound />}
 
             {(cards.length > 0 && status === 'ok' && cards[0] !== null) && <h2 className='cards__title'>Resultados de la búsqueda</h2>}
 
