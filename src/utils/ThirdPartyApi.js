@@ -1,4 +1,4 @@
-const API_KEY = import.meta.env.API_KEY
+const VITE_API_KEY = import.meta.env.VITE_API_KEY
 
 class Api {
     constructor(options) {
@@ -38,6 +38,6 @@ export const api = new Api({
     urlApi: 'https://newsapi.org/v2',
     header: {
         "Authorization": `Bearer ${''}` || '',
-        "X-Api-Key": `${API_KEY}` || '',
+        "X-Api-Key": `${VITE_API_KEY}` || '',
     }
 })
