@@ -17,12 +17,13 @@ class Api {
     async getSearchCardsNews (parametres) {
         const params = new URLSearchParams({
             q: parametres.q,
-            from: parametres.from,
-            to: parametres.to || new Date().toLocaleDateString(),
+            from: parametres.from || new Date(new Date().setDate(new Date().getDate() - 7)).toLocaleDateString('en-CA'),
+            to: parametres.to || new Date().toLocaleDateString('en-CA'),
             sortBy: parametres.sortBy || "popularity",
             pageSize: parametres.pageSize || 20,
         })
-        
+
+
         const response = await fetch(`${this._urlApi}/everything?${params}`, {
             method: 'GET',
             headers: this._header,
@@ -37,6 +38,6 @@ export const api = new Api({
     urlApi: 'https://newsapi.org/v2',
     header: {
         "Authorization": `Bearer ${''}` || '',
-        "X-Api-Key": "9997d69d8607463ebd78c9844be7a8ec"
+        "X-Api-Key": `${API_KEY}` || '',
     }
 })
