@@ -87,7 +87,7 @@ const PopupWithForm = (props) => {
                 <button className='popup-with-form__close-button' type='button' aria-label='Cerrar modal'
                 onClick={e => props.setIsOpen(false)}
                 >
-                    <img className='popup-with-form__close-icon' src={CloseIcon} alt='' />
+                    <img className='popup-with-form__close-icon' src={CloseIcon} alt='Cerrar modal' />
                 </button>
                 <h2 className='popup-with-form__title' id='login-title'>Login</h2>
                 {/* aqui va el contendio del componete/prop children */}

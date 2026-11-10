@@ -1,7 +1,7 @@
 import './Footer.css';
 
-import facebookIcon from '../../images/fb.png';
-import githubIcon from '../../images/github.png';
+import facebookIcon from '../../images/Fecebook.svg';
+import githubIcon from '../../images/Github.svg';
 
 
 const Footer = () => {

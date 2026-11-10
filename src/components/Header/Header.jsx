@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router'
 
 import Navigation from '../Navigation/Navigation'
-
 import SearchForm from '../SearchForm/SearchForm'
 
 import { useCardsNews } from '../NewsCardList/NewsCardList';

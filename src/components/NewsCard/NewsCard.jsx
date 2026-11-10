@@ -1,7 +1,6 @@
 import './NewsCard.css'
 
 import BookMark from "../../images/bookmark.svg"
-import Image from "../../images/image_08.png"
 
 const NewsCard = (props) => {
 
@@ -13,7 +12,7 @@ const NewsCard = (props) => {
             </button>
 
             <figure className='news-card__content-image'>
-                <img src={props.image} className='news-card__image' />
+                <img alt='Imagen de la noticia' src={props.image} className='news-card__image' />
             </figure>
 
             <figcaption className='news-card__content'>

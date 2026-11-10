@@ -7,7 +7,7 @@ const Preloader = () => {
     return (
         <div className="preloader">
             <figure className="preloader__figure">
-                <img className="preloader__image" src={Ellipsis} alt="preloader" />
+                <img className="preloader__image" src={Ellipsis} alt="Cargando..." />
             </figure>
             <p className="preloader__text">buscando noticias...</p>
         </div>
