@@ -46,3 +46,8 @@
     border-radius: 50px;
     cursor: pointer;
 }
+
+.cards__button-more:hover {
+    background-color: #d4d0d0;
+    transition: background-color 0.3s ease-in-out;
+}

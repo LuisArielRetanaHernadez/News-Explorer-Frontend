@@ -14,7 +14,12 @@
     border-radius: 50px;
     display: flex;
 }
-
+.search-form__field-search:hover {
+    border: 1px solid #fff;
+}
+.search-form__field-search:focus-within {
+    border: 1px solid #fff;
+}
 .search-form__input {
     padding: 10px 20px;
     font-family: 'Roboto 400 Regular', sans-serif;
@@ -38,6 +43,7 @@
     background-color: #fff;  
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
 .search-form__button--search {
