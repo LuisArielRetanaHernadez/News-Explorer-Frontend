@@ -84,26 +84,22 @@ const Header = () => {
   }
 
   return (
-    <header className="header header--floating"> 
-    
-      <div 
-        className="header__navigation header__navigation--wrapper header__navigation--floating"
-        ref={navigationRef}
-        >
-          <Link className='header__logo' to="/">NewsExplorer</Link>
-          <Navigation />
-      </div>
-
-      <div className="header__hero">
-          <div className="hero hero--relative">
-            <div className="hero__content hero__content--wrapper">
-                <h1 className="hero__title">¿Que esta pasando en el mundo?</h1>
-                <p className="hero__subtitle">Encuentra las últimas noticias sobre cualquier tema y guárdalas en tu cuenta personal</p>
-                <SearchForm handleSearch={handleSearchCardsNews}/>
-            </div>
+    <header className="header"> 
+      <div className="header__mesh header__container">
+        <div 
+          className="header__navigation header__navigation--wrapper header__navigation--floating"
+          ref={navigationRef}
+          >
+            <Link className='header__logo' to="/">NewsExplorer</Link>
+            <Navigation />
         </div>
-      </div>
 
+          <div className="header__hero hero--relative">
+            <h1 className="header__hero-title">¿Que esta pasando en el mundo?</h1>
+            <p className="header__hero-subtitle">Encuentra las últimas noticias sobre cualquier tema y guárdalas en tu cuenta personal</p>
+            <SearchForm handleSearch={handleSearchCardsNews}/>
+        </div>
+      </div>        
     </header>
     )
 }
