@@ -45,3 +45,37 @@
     font-family: "Roboto 400 Regular", sans-serif;
     font-size: 18px;
 }
+
+
+/* ---------------------- media queries (min-width: 768px) and (max-width: 1024px) ---------------- */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .about__container--wrapper {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .about__container {
+        gap: 32;
+    }
+
+    .about__content {
+        max-width: 424px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .about__content-image {
+        width: 232px;
+        height: 232px;
+        margin-top: 61px;
+        margin-bottom: 61px;
+    }
+
+    .about__title {
+        font-size: 30px;
+    }
+        
+}
+
