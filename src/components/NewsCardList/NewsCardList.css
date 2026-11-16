@@ -71,6 +71,16 @@
     }
 
     .cards__list {
+        justify-content: center;
+        gap: 8px;
+    }
+}
+
+/* ----------------------- media queries (min-width: 220px) and (max-width: 768px) ----------------------- */
+
+@media (min-width: 220px) and (max-width: 767px) {
+    .cards__list {
+        justify-content: center;
         gap: 8px;
     }
 }
