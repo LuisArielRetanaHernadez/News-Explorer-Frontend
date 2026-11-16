@@ -18,9 +18,11 @@ const NewsCard = (props) => {
             <figcaption className='news-card__content'>
                 <time className='news-card__time'> {props.date}</time>
                 <h3 className='news-card__title'> {props.title} </h3>
-                <p className='news-card__text'>
-                    {props.texts}
-                </p>
+                <div className='news-card__content-texts'>
+                    <p className='news-card__text'>
+                        {props.texts}
+                    </p>
+                </div>
                 <span className='news-card__source'> {props.source} </span>
             </figcaption>
         </article>
