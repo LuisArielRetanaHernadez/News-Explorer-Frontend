@@ -3,6 +3,7 @@
     height: 576px;
     background-color: #fff;
     box-shadow: 7px 5px 8px -7px rgba(0, 0, 0, 0.2); 
+    position: relative;
 }
 
 .news-card--raunded {
