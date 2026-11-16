@@ -138,3 +138,21 @@
     color: #2F71E5;
     cursor: pointer;
 }
+
+/* ----------------------- media queries (min-width: 220px) and (max-width: 768px) ----------------------- */
+
+
+@media (min-width: 220px) and (max-width: 767px) {
+    .popup-with-form {
+        align-items: end;
+    }
+    .popup-with-form__modal {
+        max-width: 100%;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .popup-with-form__close-button {
+        top: -70px;
+        right: 20px;
+    }
+}
