@@ -82,6 +82,9 @@
     max-height: 55%;
     margin-top: 12px;
     margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
     font-family: 'Roboto Slab 400', sans-serif;
     font-size: 26px;
     word-wrap: break-word;
@@ -125,6 +128,7 @@
     }
 
     .news-card__title {
+        max-height: 55%;
         font-size: 24px;
     }
 
