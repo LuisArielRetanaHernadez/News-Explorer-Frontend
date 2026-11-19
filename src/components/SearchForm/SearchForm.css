@@ -57,3 +57,25 @@
     background-color: #2f71e5;
     color: #fff;
 }
+
+/* ----------------------- media queries (min-width: 220px) and (max-width: 768px) ----------------------- */
+
+@media (min-width: 220px) and (max-width: 767px) {
+    .search-form__field-search {
+        
+        background-color: transparent;
+        flex-direction: column;
+    }
+
+    .search-form__field-search:hover {
+        border: none;
+    }
+    .search-form__field-search:focus-within {
+        border: none;
+    }
+
+    .search-form__button {
+        width: 100%;
+        margin-top: 16px;
+    }
+}
