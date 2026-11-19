@@ -16,45 +16,8 @@ import { create } from 'zustand';
 
 
 export const useCardsNews = create(set => ({
-  cards: [
-    {
-        urlToImage: Avatar,
-        publishedAt: '11-11-2026',
-        title: 'Noche Buena de Navidadddddddddddddddddddddddddd dddddddddd fffffffffffffffffffffffffffffffffffffffffffffffffgggggggggggggg',
-        description: 'Este bloque fffffffff ddddddddddd ddddddddddddddddddddddddescribe al autor gggggggg del proyecto. Aquí debe indicaghhhhhh hhhhhhhhhhhhhggggggggggggggggggddddddddddddddddr tu nombre, a qué te dedicas y qué tecnologías de desarrollo',
-        source: {
-            name: 'tigger'
-        }
-    },
-    {
-        urlToImage: Avatar,
-        publishedAt: '11-11-2026',
-        title: 'Noche Buena',
-        description: 'Este bloque describe al autor del proyecto. Aquí debe indicar tu nomggggggggggggggggggbre, a qué vvvvvvvvvvvvvvvvvvvvdddddddddddddddddddddddte dedicas y qué thhhhhhhhhhhhhhhhhhddddddddddddecnologías de desarrollo',
-        source: {
-            name: 'tigger'
-        }
-    },
-    {
-        urlToImage: Avatar,
-        publishedAt: '11-11-2026',
-        title: 'Noche Buena',
-        description: 'Este bloque describe al autor del proyecto. Aquí debe indicar tu nombre, a qué te dedicas y qué tecnologías de desarrollo',
-        source: {
-            name: 'tigger'
-        }
-    },
-    {
-        urlToImage: Avatar,
-        publishedAt: '11-11-2026',
-        title: 'Noche Buena',
-        description: 'Este bloque describe al autor del proyecto. Aquí debe indicar tu nombre, a qué te dedicas y qué tecnologías de desarrollo',
-        source: {
-            name: 'tigger'
-        }
-    },
-],
-  status: 'ok',
+  cards: [],
+  status: '',
   isPreloader: false,
   getCardsNews: (cardsFind) => set(state => ({cards: cardsFind})),
   resetEmaptyCardsNews: () => set(state =>({cards: []})),
