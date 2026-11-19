@@ -25,8 +25,9 @@
 .header__navigation {
     width: 100%;
     margin: 0 auto;
+    padding-top: 16px;
+    padding-bottom: 16px;
     border-bottom: #fff 1px solid;
-    background-color: transparent;
     display: flex;
     align-items: center;
     transition: .4s;
@@ -75,6 +76,7 @@
     max-width: 608px;
     margin-bottom: 32px;
     font-family:'Roboto slab 400', sans-serif;
+    font-weight: 400;
     font-size: 60px;
     letter-spacing: 0px;
     color: #fff;
@@ -87,12 +89,13 @@
     max-width: 608px;
     margin: 0;
     font-family:'Roboto 400 Regular', sans-serif;
+    font-weight: 400;
     font-size: 18px;
     color: #fff;
     text-align: start;
 }
 
-/* ------------------- media queries (max-width: 768px) ---------------- */
+/* ------------------- media queries (max-width: 768px) and (min-width: 1024px) ---------------- */
 @media (min-width: 768px) and (max-width: 1024px) {
     .header__navigation--wrapper {
         padding-left: 20px;
@@ -112,5 +115,42 @@
     .header__hero-subtitle {
         width: 100%;
         max-width: 452px;
+    }
+}
+
+/* ----------------------- media queries (min-width: 220px) and (max-width: 768px) ----------------------- */
+
+@media (min-width: 220px) and (max-width: 767px) {
+    .header__navigation {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .header__navigation--wrapper {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .header__logo {
+        font-size: 16px;
+        flex: none;
+    }
+
+    .header__navigation--menu-open {
+        background-color: #1A1B22;
+    }
+
+    .header__hero {
+        max-width: 288px;
+    }
+
+    .header__hero-title {
+        font-size: 32px;
+    }
+
+    .header__hero-subtitle {
+        font-size: 20px;
     }
 }

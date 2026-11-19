@@ -12,6 +12,7 @@ import { api } from '../../utils/ThirdPartyApi';
 
 const Header = () => {
   const [scrollY, setScrollY] = useState(0)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const getCardsNews = useCardsNews(state => state.getCardsNews)
   const setStatus = useCardsNews(state => state.setStatus)
@@ -87,14 +88,18 @@ const Header = () => {
     <header className="header"> 
       <div className="header__mesh header__container">
         <div 
-          className="header__navigation header__navigation--wrapper header__navigation--floating"
+          className={`header__navigation header__navigation--wrapper header__navigation--floating ${isMenuOpen ? 'header__navigation--menu-open' : ''}`}
           ref={navigationRef}
           >
             <Link className='header__logo' to="/">NewsExplorer</Link>
-            <Navigation />
+            <Navigation
+              isMenuOpen={isMenuOpen}
+              onMenuToggle={() => setIsMenuOpen((isOpen) => !isOpen)}
+              onMenuClose={() => setIsMenuOpen(false)}
+            />
         </div>
 
-          <div className="header__hero hero--relative">
+          <div className="header__hero">
             <h1 className="header__hero-title">¿Que esta pasando en el mundo?</h1>
             <p className="header__hero-subtitle">Encuentra las últimas noticias sobre cualquier tema y guárdalas en tu cuenta personal</p>
             <SearchForm handleSearch={handleSearchCardsNews}/>
