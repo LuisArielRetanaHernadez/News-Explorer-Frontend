@@ -136,3 +136,27 @@
         font-size: 16px;
     }
 }
+
+/* ----------------------- media queries (min-width: 220px) and (max-width: 768px) ----------------------- */
+
+@media (min-width: 220px) and (max-width: 767px) {
+    .news-card {
+        max-width: 288px;
+        height: 440px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .news-card__content-image {
+        max-height: 196px;
+    }
+
+    .news-card__content {
+        flex: 1;
+    }
+
+    .news-card__title {
+        font-size: 22px;
+    }
+}
+
