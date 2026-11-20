@@ -7,18 +7,9 @@ import { Link } from 'react-router'
 import Navigation from '../Navigation/Navigation'
 import SearchForm from '../SearchForm/SearchForm'
 
-import { useCardsNews } from '../NewsCardList/NewsCardList';
-import { api } from '../../utils/ThirdPartyApi';
-
-const Header = () => {
+const Header = ({handleSearch}) => {
   const [scrollY, setScrollY] = useState(0)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const getCardsNews = useCardsNews(state => state.getCardsNews)
-  const setStatus = useCardsNews(state => state.setStatus)
-  const resetEmaptyCardsNews = useCardsNews(state => state.resetEmaptyCardsNews)
-  const setIsPreloader = useCardsNews(state => state.setIsPreloader)
-
 
   const navigationRef = useRef()
 
@@ -47,43 +38,6 @@ const Header = () => {
 
   }, [navigationRef, scrollY])
 
-  const handleSearchCardsNews = async(text) => {
-    const fromSevenDays = new Date()
-    fromSevenDays.setDate(fromSevenDays.getDate() - 7)
-
-    setIsPreloader(true)
-
-    try {
-      const response = await api.getSearchCardsNews({
-        q: text,
-        from: fromSevenDays.toLocaleDateString('en-CA'),
-        to: new Date().toLocaleDateString('en-CA'),
-        sortBy: 'popularity',
-        pageSize: 100
-      })
-
-      if (response.status === 'ok' && response.articles.length > 0) {
-        getCardsNews(response.articles)
-        setStatus('ok')
-      }
-
-      if (response.status !== 'ok') {
-        setStatus(response.status)
-        resetEmaptyCardsNews()
-      }
-
-      if (response.status === 'ok' && response.articles.length <= 0) {
-        setStatus('ok')
-        getCardsNews([null])
-      }
-    } catch (error) {
-      setStatus(error.message)
-      resetEmaptyCardsNews()
-    } finally {
-      setIsPreloader(false)
-    }
-  }
-
   return (
     <header className="header"> 
       <div className="header__mesh header__container">
@@ -102,7 +56,7 @@ const Header = () => {
           <div className="header__hero">
             <h1 className="header__hero-title">¿Que esta pasando en el mundo?</h1>
             <p className="header__hero-subtitle">Encuentra las últimas noticias sobre cualquier tema y guárdalas en tu cuenta personal</p>
-            <SearchForm handleSearch={handleSearchCardsNews}/>
+            <SearchForm handleSearch={handleSearch}/>
         </div>
       </div>        
     </header>
