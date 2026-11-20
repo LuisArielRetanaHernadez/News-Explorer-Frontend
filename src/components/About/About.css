@@ -5,7 +5,7 @@
 
 .about__container {
     display: flex;
-    gap: 56;
+    gap: 56px;
 }
 
 .about__container--wrapper {
@@ -57,7 +57,7 @@
     }
 
     .about__container {
-        gap: 32;
+        gap: 32px;
     }
 
     .about__content {
@@ -79,3 +79,37 @@
         
 }
 
+/* ----------------------- media queries (min-width: 220px) and (max-width: 768px) ----------------------- */
+
+@media (min-width: 220px) and (max-width: 767px) {
+    .about__container {
+        margin: 0;
+        padding-top: 24px;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .about__container--wrapper {
+        padding-top: 24px;        
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .about__content-image {
+        width: 272px;
+        height: 272px;
+        margin: 0;
+    }
+
+    .about__content {
+        max-width: 288px;
+        margin-top: 0;
+        text-align: start;
+    }
+
+    .about__title {
+        margin-top: 24px;
+        font-weight: 400;
+    }
+}
