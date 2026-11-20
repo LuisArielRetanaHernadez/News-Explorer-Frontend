@@ -84,3 +84,20 @@
         gap: 8px;
     }
 }
+
+/* ----------------------- media queries (min-width: 220px) and (max-width: 768px) ----------------------- */
+
+@media (min-width: 220px) and (max-width: 767px) {
+    .cards {
+        padding-top: 32px;
+        padding-bottom: 24px;
+    }
+    .cards--wrapper {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .cards__title {
+        margin-top: 0px;
+        margin-bottom: 24px;        
+    }
+}
