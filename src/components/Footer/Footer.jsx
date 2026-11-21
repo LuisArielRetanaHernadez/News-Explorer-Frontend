@@ -21,12 +21,12 @@ const Footer = () => {
                     <ul className="footer__navigation-list footer__navigation-list--social">
                         <li className="footer__navigation-item">
                             <a href="#" className="footer__navigation-link" aria-label="Facebook">
-                                <img className="footer__link-icon" src={facebookIcon} alt="" />
+                                <img className="footer__link-icon" src={facebookIcon} alt="link facebook" />
                             </a>
                         </li>
                         <li className="footer__navigation-item">
                             <a href="#" className="footer__navigation-link" aria-label="GitHub">
-                                <img className="footer__link-icon" src={githubIcon} alt="" />
+                                <img className="footer__link-icon" src={githubIcon} alt="link github" />
                             </a>
                         </li>
                     </ul>
