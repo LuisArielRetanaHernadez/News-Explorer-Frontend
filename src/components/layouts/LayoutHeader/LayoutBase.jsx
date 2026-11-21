@@ -4,11 +4,11 @@ import './LayoutBase.css'
 
 import {Outlet} from 'react-router'
 
-const LayoutHeader = () => {
+const LayoutHeader = ({handleSearch}) => {
   return (
     <div className="layout-header">
 
-        <Header />
+        <Header handleSearch={handleSearch}/>
 
         <main className="layout-header__main">
           <Outlet />
