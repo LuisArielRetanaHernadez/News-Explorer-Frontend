@@ -99,7 +99,7 @@ const NewCardList = () => {
                     (status === 'ok' && cards.length > 0 && cards[0] !== null) &&
                     cards.map((card, index) => (
                         <li key={index} className='cards__item'>
-                            <Link className='cards__link'>
+                            <Link className='cards__link' to=''>
                                 <NewsCard 
                                     key={index} 
                                     image={card.urlToImage} 
