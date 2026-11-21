@@ -2,7 +2,7 @@ import './App.css'
 
 import Home from '../Home/Home.jsx'
 
-import LayoutBase from '../layouts/LayoutHeader/LayoutBase.jsx'
+import LayoutBase from '../layouts/LayoutBase/LayoutBase.jsx'
 
 import { Routes, Route } from 'react-router'
 
