@@ -156,3 +156,12 @@
         right: 20px;
     }
 }
+
+/* ----------------------- media queries (min-width: 220px) and (max-width: 768px) ----------------------- */
+
+@media (min-width: 220px) and (max-width: 767px) {
+    .popup-with-form__modal {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
