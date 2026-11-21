@@ -1,10 +1,9 @@
 import './NewsCardList.css'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { Link } from 'react-router'
 
-import Avatar from '../../images/Avatar.jpg'
 
 import NewsCard from '../NewsCard/NewsCard'
 import Preloader from '../Preloader/Preloader'
@@ -14,15 +13,14 @@ import ErrorFound from '../ErrorFound/ErrorFound'
 import { create } from 'zustand';
 
 
-
 export const useCardsNews = create(set => ({
   cards: [],
   status: '',
   isPreloader: false,
-  getCardsNews: (cardsFind) => set(state => ({cards: cardsFind})),
-  resetEmaptyCardsNews: () => set(state =>({cards: []})),
-  setStatus: (status) => set(state => ({status: status})),
-  setIsPreloader: (isPreloader) => set(state => ({isPreloader: isPreloader})),
+  getCardsNews: (cardsFind) => set({cards: cardsFind}),
+  resetEmaptyCardsNews: () => set({cards: []}),
+  setStatus: (status) => set({status}),
+  setIsPreloader: (isPreloader) => set({isPreloader}),
 }))
 
 
@@ -33,58 +31,49 @@ const NewCardList = () => {
 
     const numberCardsToRender = 3
 
-    const [indexFromCard, setIndexFromCard] = useState(0)
-    const [indexToCard, setIndexToCard] = useState(numberCardsToRender)
-    const [activeButtonMore, setActiveButtonMore] = useState(false)
-    const [isVisisbleSection, setIsVisibleSection] = useState(false)
+    const [pagination, setPagination] = useState({
+        countCards: null,
+        indexToCard: numberCardsToRender,
+        activeButtonMore: false,
+    })
+
+    const hasResults = status === 'ok' && cards.length > 0 && cards[0] !== null
+    const isCurrentResultSet = pagination.countCards === cards.length
+    const indexToCard = isCurrentResultSet
+        ? pagination.indexToCard
+        : numberCardsToRender
+    const activeButtonMore = hasResults && (
+        isCurrentResultSet ? pagination.activeButtonMore : true
+    )
+    const isVisibleSection = isVisiblePreloader || Boolean(status)
 
     const moreCardsToRender = () => {
-        if (cards.length <= 0 || cards[0] === null) return
-        
-        if (indexToCard >= cards.length) {
-            setActiveButtonMore(false)
-            return
-        }
+        if (!hasResults) return
 
-        setIndexToCard(state => state + numberCardsToRender)
+        setPagination(currentPagination => {
+            const currentIndexToCard = currentPagination.countCards === cards.length
+                ? currentPagination.indexToCard
+                : numberCardsToRender
+
+            if (currentIndexToCard >= cards.length) {
+                return {
+                    countCards: cards.length,
+                    indexToCard: currentIndexToCard,
+                    activeButtonMore: false,
+                }
+            }
+
+            return {
+                countCards: cards.length,
+                indexToCard: currentIndexToCard + numberCardsToRender,
+                activeButtonMore: true,
+            }
+        })
     }
-
-    useEffect(() => {
-        if (cards.length <= 0 && status === '') {
-            setIsVisibleSection(false)
-            setActiveButtonMore(false)
-            return
-        }
-
-        if (status === 'ok' && cards.length[0] === null) { 
-            setIsVisibleSection(true)
-            return
-        }
-
-        if (status === 'error') {
-            setIsVisibleSection(true)
-            setActiveButtonMore(false)
-            return
-        }
-
-        if (status === 'ok' && cards.length > 0 && cards[0] !== null) {
-            setIsVisibleSection(true)
-            setIndexFromCard(0)
-            setIndexToCard(numberCardsToRender)
-            setActiveButtonMore(true)
-        }
-        
-    }, [cards, status])
-
-    useEffect(() => {
-        if (isVisiblePreloader) {
-            setIsVisibleSection(true)
-        }
-    }, [isVisiblePreloader])
 
 
     return (
-        <section className={`${ isVisisbleSection && 'cards cards--wrapper'}`}>
+        <section className={`${ isVisibleSection && 'cards cards--wrapper'}`}>
 
             {isVisiblePreloader && <Preloader />}
 
@@ -96,7 +85,7 @@ const NewCardList = () => {
 
             <ul className='cards__list'>
                 {
-                    (status === 'ok' && cards.length > 0 && cards[0] !== null) &&
+                    hasResults &&
                     cards.map((card, index) => (
                         <li key={index} className='cards__item'>
                             <Link className='cards__link' to=''>
@@ -110,7 +99,7 @@ const NewCardList = () => {
                                 />
                             </Link>
                         </li>
-                    )).slice(indexFromCard, indexToCard)
+                    )).slice(0, indexToCard)
                 }
 
             </ul>
