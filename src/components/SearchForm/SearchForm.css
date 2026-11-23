@@ -56,6 +56,11 @@
     border-radius: 50px;
     background-color: #2f71e5;
     color: #fff;
+    transition: .5s;
+}
+
+.search-form__button--search:hover {
+    background-color: #1151c0;
 }
 
 /* ----------------------- media queries (min-width: 220px) and (max-width: 768px) ----------------------- */
@@ -72,6 +77,14 @@
     }
     .search-form__field-search:focus-within {
         border: none;
+    }
+
+    .search-form__input--search:hover {
+        border: #2f71e5 solid 2px;
+    }
+
+    .search-form__input--search:focus {
+        border: #2f71e5 solid 2px;
     }
 
     .search-form__button {
