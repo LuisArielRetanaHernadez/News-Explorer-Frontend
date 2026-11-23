@@ -39,6 +39,7 @@
 .popup-with-form__close-button {
     width: 40px;
     height: 40px;
+    padding: 0;
     background-color: transparent;
     border: none;
     color: blue;
@@ -47,6 +48,12 @@
     top: -40px;
     right: -40px;
     cursor: pointer;
+}
+
+.popup-with-form__close-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .popup-with-form__title {
@@ -161,7 +168,16 @@
 
 @media (min-width: 220px) and (max-width: 767px) {
     .popup-with-form__modal {
+        height: 85vh;
+        max-height: 560px;
         padding-left: 16px;
         padding-right: 16px;
+    }
+
+    .popup-with-form__close-button {
+        min-width: 24px;
+        min-height: 24px;
+        top: -50px;
+        right: 10px;
     }
 }
