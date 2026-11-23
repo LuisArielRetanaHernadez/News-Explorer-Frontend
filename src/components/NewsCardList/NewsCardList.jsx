@@ -10,6 +10,8 @@ import Preloader from '../Preloader/Preloader'
 import NotFound from '../NotFound/NotFound'
 import ErrorFound from '../ErrorFound/ErrorFound'
 
+import { formatDateToSpanish } from '../../utils/formatDate'
+
 import { create } from 'zustand';
 
 
@@ -92,7 +94,7 @@ const NewCardList = () => {
                                 <NewsCard 
                                     key={index} 
                                     image={card.urlToImage} 
-                                    date={card.publishedAt}
+                                    date={formatDateToSpanish(card.publishedAt)}
                                     title={card.title}
                                     texts={card.description}
                                     source={card.source.name} 
