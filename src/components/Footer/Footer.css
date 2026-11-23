@@ -53,6 +53,11 @@
     font-family: 'Roboto 400 Regular', sans-serif;
     text-decoration: none;
     color: #000;
+    transform: .5s;
+}
+
+.footer__navigation-link:hover {
+    color: #2f71e5;
 }
 
 .footer__link-icon {
@@ -60,6 +65,11 @@
     width: 20px;
     height: 20px;
     object-fit: contain;
+    transform: .5s;
+}
+
+.footer__link-icon:hover {
+    transform: scale(1.2);
 }
 
 /* ----------------------- media queries (min-width: 220px) and (max-width: 768px) ----------------------- */
