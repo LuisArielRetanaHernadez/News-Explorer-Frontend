@@ -54,9 +54,9 @@
 }
 
 .header__logo {
-    font-family: 'Roboto slab 400', sans-serif;
+    font-family: 'Roboto Slab', sans-serif;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 700;
     color: #fff;
     text-decoration: none;
     flex: 1;
@@ -75,7 +75,7 @@
     width: 100%;
     max-width: 608px;
     margin-bottom: 32px;
-    font-family:'Roboto slab 400', sans-serif;
+    font-family: 'Roboto Slab', sans-serif;
     font-weight: 400;
     font-size: 60px;
     letter-spacing: 0px;
@@ -88,7 +88,7 @@
     width: 100%;
     max-width: 608px;
     margin: 0;
-    font-family:'Roboto 400 Regular', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 18px;
     color: #fff;

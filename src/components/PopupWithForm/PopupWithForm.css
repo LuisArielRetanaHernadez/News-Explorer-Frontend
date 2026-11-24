@@ -58,7 +58,8 @@
 
 .popup-with-form__title {
     margin-top: 14px;
-    font-family: "Roboto 900", sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
     font-size: 24px;
 }
 
@@ -86,7 +87,8 @@
 }
 
 .popup-with-form__label {
-    font-family: "Inter 400 Regular", sans-serif;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
     font-size: 12px;
     color: #2F71E5;
 }
@@ -94,7 +96,8 @@
 .popup-with-form__input {
     padding-top: 10px;
     padding-bottom: 10px;
-    font-family: "Inter 400 Regular", sans-serif;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
     font-size: 14px;
     border: none;
     border-bottom: 1px solid #000000;
@@ -111,7 +114,8 @@
     margin-top: 39px;
     border: none;
     border-radius: 50px;
-    font-family: "Roboto 500", sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
     font-size: 18px;
 }
 

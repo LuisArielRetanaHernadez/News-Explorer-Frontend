@@ -15,7 +15,8 @@
 }
 
 .navigation__item {
-    font-family: 'Roboto 400 Regular', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     display: flex;
     align-items: center;
 }
@@ -24,7 +25,7 @@
     color: #fff;
     padding: 9px 20px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     position: relative;
 }
 
@@ -39,8 +40,8 @@
 }
 
 .navigation__button {
-    font-family: 'Roboto 400 Regular', sans-serif;
-    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
     color: #fff;
     background-color: transparent;
     border: none;

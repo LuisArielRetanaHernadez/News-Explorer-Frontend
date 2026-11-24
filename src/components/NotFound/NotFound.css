@@ -17,7 +17,8 @@
 .not-found__title {
     margin-top: 32px;
     margin-bottom: 16px;
-    font-family: 'Roboto Slab 400', sans-serif;
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 400;
     color: #1A1B22;
     font-size: 26px;
     text-align: center;
@@ -25,7 +26,8 @@
 
 .not-found__text {
     margin: 0;
-    font-family: 'Roboto Regular 400', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     color: #B6BCBF;
     font-size: 24px;
     text-align: center;

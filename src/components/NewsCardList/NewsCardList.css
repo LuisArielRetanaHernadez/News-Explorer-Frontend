@@ -14,7 +14,8 @@
 
 .cards__title {
     margin-bottom: 64px;
-    font-family: "Roboto Slab 400", sans-serif;
+    font-family: "Roboto Slab", sans-serif;
+    font-weight: 400;
     font-size: 46px;
 }
 
@@ -39,7 +40,7 @@
     color: #000;
     background-color: #E8E8E8;
     display: block;
-    font-family: "Roboto 500", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 18px;
     font-weight: 500;
     border: none;

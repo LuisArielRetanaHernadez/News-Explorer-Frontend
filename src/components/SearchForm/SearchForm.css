@@ -22,7 +22,8 @@
 }
 .search-form__input {
     padding: 10px 20px;
-    font-family: 'Roboto 400 Regular', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     font-size: 16px;
     background-color: #fff;  
     border: none;
@@ -52,7 +53,8 @@
     padding-right: 24px;
     padding-top: 21px;
     padding-bottom: 21px;
-    font-family: 'Roboto 400 Regular', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     border-radius: 50px;
     background-color: #2f71e5;
     color: #fff;

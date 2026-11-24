@@ -37,12 +37,14 @@
 }
 
 .about__title {
-    font-family: "Roboto Slab 400", sans-serif;
+    font-family: "Roboto Slab", sans-serif;
+    font-weight: 400;
     font-size: 40px;
 }
 
 .about__text {
-    font-family: "Roboto 400 Regular", sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
     font-size: 18px;
 }
 
