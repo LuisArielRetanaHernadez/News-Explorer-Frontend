@@ -8,7 +8,12 @@ import { Link } from 'react-router'
 import NewsCard from '../NewsCard/NewsCard'
 import Preloader from '../Preloader/Preloader'
 import NotFound from '../NotFound/NotFound'
+
+// -----------------------------------------------
+// PENDIENTE: hacer estos dos componentes uno solo
 import ErrorFound from '../ErrorFound/ErrorFound'
+import InvalidText from '../InvalidText/InvalidText'
+// -------------------------------------------
 
 import { formatDateToSpanish } from '../../utils/formatDate'
 
@@ -17,7 +22,11 @@ import { create } from 'zustand';
 
 export const useCardsNews = create(set => ({
   cards: [],
-  status: '',
+  status: {
+    isError: false,
+    status: '', 
+    message: ''
+  },
   isPreloader: false,
   getCardsNews: (cardsFind) => set({cards: cardsFind}),
   resetEmaptyCardsNews: () => set({cards: []}),
@@ -47,7 +56,7 @@ const NewCardList = () => {
     const activeButtonMore = hasResults && (
         isCurrentResultSet ? pagination.activeButtonMore : true
     )
-    const isVisibleSection = isVisiblePreloader || Boolean(status)
+    const isVisibleSection = isVisiblePreloader || Boolean(status.status)
 
     const moreCardsToRender = () => {
         if (!hasResults) return
@@ -79,9 +88,11 @@ const NewCardList = () => {
 
             {isVisiblePreloader && <Preloader />}
 
-            {(status === 'ok' && cards[0] === null) && <NotFound />}
+            {status.status === 'clave invalid' && <InvalidText />}
 
-            {(status === 'error') && <ErrorFound />}
+            {(status.status === 'empty' && cards[0] === null) && <NotFound />}
+
+            {(status.status === 'error') && <ErrorFound />}
 
             {(cards.length > 0 && status === 'ok' && cards[0] !== null) && <h2 className='cards__title'>Resultados de la búsqueda</h2>}
 
