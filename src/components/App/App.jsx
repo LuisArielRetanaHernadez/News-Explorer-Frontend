@@ -16,7 +16,37 @@ function App() {
   const resetEmaptyCardsNews = useCardsNews(state => state.resetEmaptyCardsNews)
   const setIsPreloader = useCardsNews(state => state.setIsPreloader)
 
+  const validatorTextSearch = (text) => {
+
+    if (!text) return false
+
+    const isOnlyEscapeText = text
+
+    if (!isOnlyEscapeText.trim()) return false
+
+    return true
+
+  }
+
+  // Quitar los espacio al inicio del texto y los multiples espacios consecutivos
+  const clearTextSearch = (text) => text.trimStart().replace(/\s+/g, " ")
+
   const handleSearchCardsNews = async(text) => {
+
+    const textClear = clearTextSearch(text)
+
+    const isValidText = validatorTextSearch(text)
+
+    if (!isValidText) {
+      setStatus({
+        isError: true,
+        status: 'clave invalid',
+        message: 'Error: Introduce un caracter valido'
+      })
+      return
+    }
+
+
     const fromSevenDays = new Date()
     fromSevenDays.setDate(fromSevenDays.getDate() - 7)
 
@@ -24,7 +54,7 @@ function App() {
   
     try {
       const response = await api.getSearchCardsNews({
-        q: text,
+        q: textClear,
         from: fromSevenDays.toLocaleDateString('en-CA'),
         to: new Date().toLocaleDateString('en-CA'),
         sortBy: 'popularity',
@@ -33,7 +63,11 @@ function App() {
 
       if (response.status === 'ok' && response.articles.length > 0) {
         getCardsNews(response.articles)
-        setStatus('ok')
+        setStatus({
+          isError: false,
+          status: 'ok',
+          message: 'Cards encontradas'
+        })
       }
 
       if (response.status !== 'ok') {
@@ -42,11 +76,19 @@ function App() {
       }
 
       if (response.status === 'ok' && response.articles.length <= 0) {
-        setStatus('ok')
+        setStatus({
+          isError: false,
+          status: 'empty',
+          message: 'No se encontro Cards'
+        })
         getCardsNews([null])
       }
       } catch (error) {
-        setStatus(error.message)
+        setStatus({
+          isError: true,
+          status: 'error', 
+          message: 'Error: error en la conexión al internt o error en el servidor'
+        })
         resetEmaptyCardsNews()
       } finally {
         setIsPreloader(false)
