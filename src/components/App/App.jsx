@@ -9,6 +9,24 @@ import { Routes, Route } from 'react-router'
 import { useCardsNews } from '../NewsCardList/NewsCardList.jsx';
 import { api } from '../../utils/ThirdPartyApi';
 
+
+
+const validatorTextSearch = (text) => {
+
+  if (!text) return false
+
+  const isOnlyEscapeText = text
+
+  if (!isOnlyEscapeText.trim()) return false
+
+  return true
+
+}
+
+// Quitar los espacio al inicio del texto y los multiples espacios consecutivos
+const clearTextSearch = (text) => text.trimStart().replace(/\s+/g, " ")
+
+
 function App() {
 
   const getCardsNews = useCardsNews(state => state.getCardsNews)
@@ -16,26 +34,15 @@ function App() {
   const resetEmaptyCardsNews = useCardsNews(state => state.resetEmaptyCardsNews)
   const setIsPreloader = useCardsNews(state => state.setIsPreloader)
 
-  const validatorTextSearch = (text) => {
 
-    if (!text) return false
-
-    const isOnlyEscapeText = text
-
-    if (!isOnlyEscapeText.trim()) return false
-
-    return true
-
-  }
-
-  // Quitar los espacio al inicio del texto y los multiples espacios consecutivos
-  const clearTextSearch = (text) => text.trimStart().replace(/\s+/g, " ")
 
   const handleSearchCardsNews = async(text) => {
 
     const textClear = clearTextSearch(text)
 
     const isValidText = validatorTextSearch(text)
+
+    console.log('is valid text: ', isValidText)
 
     if (!isValidText) {
       setStatus({
@@ -46,6 +53,7 @@ function App() {
       return
     }
 
+    console.log('pass valid')
 
     const fromSevenDays = new Date()
     fromSevenDays.setDate(fromSevenDays.getDate() - 7)
@@ -81,7 +89,7 @@ function App() {
           status: 'empty',
           message: 'No se encontro Cards'
         })
-        getCardsNews([null])
+        resetEmaptyCardsNews()
       }
       } catch (error) {
         setStatus({

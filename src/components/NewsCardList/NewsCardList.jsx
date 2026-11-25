@@ -48,7 +48,7 @@ const NewCardList = () => {
         activeButtonMore: false,
     })
 
-    const hasResults = status === 'ok' && cards.length > 0 && cards[0] !== null
+    const hasResults = status.status === 'ok' && cards.length > 0 && cards[0] !== null
     const isCurrentResultSet = pagination.countCards === cards.length
     const indexToCard = isCurrentResultSet
         ? pagination.indexToCard
@@ -94,7 +94,7 @@ const NewCardList = () => {
 
             {(status.status === 'error') && <ErrorFound />}
 
-            {(cards.length > 0 && status === 'ok' && cards[0] !== null) && <h2 className='cards__title'>Resultados de la búsqueda</h2>}
+            {(cards.length > 0 && status.status === 'ok' && cards[0] !== null) && <h2 className='cards__title'>Resultados de la búsqueda</h2>}
 
             <ul className='cards__list'>
                 {
