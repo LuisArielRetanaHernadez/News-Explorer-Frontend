@@ -67,7 +67,7 @@ const PopupWithForm = (props) => {
 
         return () => {
             document.removeEventListener('mousedown', onOutClickModal)
-            document.addEventListener('keydown', onKeyEscClosePopup)
+            document.removeEventListener('keydown', onKeyEscClosePopup)
         }
     },[modalRef, props.isOpen])
 
