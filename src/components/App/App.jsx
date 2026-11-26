@@ -42,8 +42,6 @@ function App() {
 
     const isValidText = validatorTextSearch(text)
 
-    console.log('is valid text: ', isValidText)
-
     if (!isValidText) {
       setStatus({
         isError: true,
@@ -52,8 +50,6 @@ function App() {
       })
       return
     }
-
-    console.log('pass valid')
 
     const fromSevenDays = new Date()
     fromSevenDays.setDate(fromSevenDays.getDate() - 7)
