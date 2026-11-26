@@ -53,7 +53,7 @@ const Header = ({handleSearch}) => {
             />
         </div>
 
-          <div className="header__hero">
+          <div className="header__hero header__hero--wrapper ">
             <h1 className="header__hero-title">¿Que esta pasando en el mundo?</h1>
             <p className="header__hero-subtitle">Encuentra las últimas noticias sobre cualquier tema y guárdalas en tu cuenta personal</p>
             <SearchForm handleSearch={handleSearch}/>

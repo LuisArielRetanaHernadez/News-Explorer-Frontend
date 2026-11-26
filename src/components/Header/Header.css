@@ -133,6 +133,11 @@
         padding-right: 16px;
     }
 
+
+}
+
+@media (min-width: 220px) and (max-width: 767px) { 
+
     .header__logo {
         font-size: 16px;
         flex: none;
@@ -143,7 +148,12 @@
     }
 
     .header__hero {
-        max-width: 288px;
+        box-sizing: border-box;
+    }
+
+    .header__hero--wrapper {
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .header__hero-title {
@@ -152,5 +162,15 @@
 
     .header__hero-subtitle {
         font-size: 20px;
+    }   
+}
+
+@media (min-width: 220px) and (max-width: 590px) { 
+    .header__hero {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
     }
 }
