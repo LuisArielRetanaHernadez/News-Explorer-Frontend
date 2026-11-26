@@ -6,7 +6,7 @@ import LayoutBase from '../layouts/LayoutBase/LayoutBase.jsx'
 
 import { Routes, Route } from 'react-router'
 
-import { useCardsNews } from '../NewsCardList/NewsCardList.jsx';
+import { useCardsNews } from '../../CustomHooks/store/useCardsNews/useCardsNews';
 import { api } from '../../utils/ThirdPartyApi';
 
 
@@ -87,7 +87,7 @@ function App() {
         })
         resetEmaptyCardsNews()
       }
-      } catch (error) {
+      } catch {
         setStatus({
           isError: true,
           status: 'error', 

@@ -48,7 +48,7 @@ example form for popup modal
 const PopupWithForm = (props) => {
     const modalRef = useRef()
 
-    const onClosePopup = (e) => {
+    const onClosePopup = () => {
         props.setIsOpen(false)
     }
 
@@ -69,7 +69,7 @@ const PopupWithForm = (props) => {
             document.removeEventListener('mousedown', onOutClickModal)
             document.removeEventListener('keydown', onKeyEscClosePopup)
         }
-    },[modalRef, props.isOpen])
+    })
 
     return (
         <section 
@@ -85,7 +85,7 @@ const PopupWithForm = (props) => {
                 ref={modalRef} 
             >
                 <button className='popup-with-form__close-button' type='button' aria-label='Cerrar modal'
-                onClick={e => props.setIsOpen(false)}
+                onClick={() => props.setIsOpen(false)}
                 >
                     <img className='popup-with-form__close-icon' src={CloseIcon} alt='Cerrar modal' />
                 </button>

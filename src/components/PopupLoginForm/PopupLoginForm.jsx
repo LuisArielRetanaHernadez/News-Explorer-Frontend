@@ -1,14 +1,8 @@
 import './PopupLoginForm.css'
 
-import { create } from 'zustand'
-
 import PopupWithForm from '../PopupWithForm/PopupWithForm'
 
-
-export const usePopupLoginForm = create(set => ({
-    isOpen: false,
-    toggleOpen: () => set(state => ({isOpen: !state.isOpen}))
-}))
+import { usePopupLoginForm } from '../../CustomHooks/store/usePopupWithForm/usePopupWithForm'
 
 
 const PopupLoginForm = () => {

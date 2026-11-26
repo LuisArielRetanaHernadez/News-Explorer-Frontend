@@ -37,7 +37,6 @@ class Api {
 export const api = new Api({
     urlApi: 'https://newsapi.org/v2',
     header: {
-        "Authorization": `Bearer ${''}` || '',
         "X-Api-Key": `${VITE_API_KEY}` || '',
     }
 })
