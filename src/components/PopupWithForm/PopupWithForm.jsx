@@ -73,7 +73,7 @@ const PopupWithForm = (props) => {
 
     return (
         <section 
-            className={`popup-with-form popup-with-form--centered ${props.isOpen ? 'popup-with-form--open' : 'popup-with-form--close'}`}
+            className={`popup-with-form popup-with-form--centrel ${props.isOpen ? 'popup-with-form--open' : 'popup-with-form--close'}`}
             
         >
             <div
