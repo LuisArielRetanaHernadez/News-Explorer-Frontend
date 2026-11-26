@@ -22,8 +22,11 @@
 .cards__list {
     padding: 0;
     list-style: none;
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
+    gap: 16px; */
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 400px));
     gap: 16px;
 }
 
@@ -73,6 +76,7 @@
 
     .cards__list {
         justify-content: center;
+        grid-template-columns: repeat(3, minmax(224px, 300px));
         gap: 8px;
     }
 }
@@ -82,8 +86,14 @@
 
 @media (min-width: 220px) and (max-width: 767px) {
 
+    .cards--wrapper {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
     .cards__list {
         justify-content: center;
+        grid-template-columns: max(288px);
         gap: 8px;
     }
 
@@ -91,10 +101,7 @@
         padding-top: 32px;
         padding-bottom: 24px;
     }
-    .cards--wrapper {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
+
     .cards__title {
         margin-top: 0px;
         margin-bottom: 24px;        

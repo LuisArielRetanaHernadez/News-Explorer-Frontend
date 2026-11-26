@@ -1,5 +1,7 @@
 .news-card {
-    width: 400px;
+    width: 100%;
+    /* min-width: 360px; */
+    max-width: 400px;
     height: 576px;
     background-color: #fff;
     box-shadow: 7px 5px 8px -7px rgba(0, 0, 0, 0.2); 
@@ -123,7 +125,7 @@
 /* ------------------------------ media queries (min-width: 768px) and (max-width: 1024px) ----------------------- */
 @media (min-width: 768px) and (max-width: 1024px) {
     .news-card {
-        max-width: 224px;
+        /* max-width: 224px; */
     }
 
     .news-card__content {
@@ -159,6 +161,7 @@
     }
 
     .news-card__title {
+        -webkit-line-clamp: 2 ;
         font-size: 22px;
     }
 }
